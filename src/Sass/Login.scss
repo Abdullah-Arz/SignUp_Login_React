@@ -1,0 +1,117 @@
+@import './Color.scss';
+
+.login-container {
+    margin: 12em 0 5em 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    padding: 0 20em 0 20em;
+}
+
+.login-h1 {
+    font-family: $font-family-bold;
+}
+
+.login-p {
+    color: $secondary-color;
+    font-family: $font-family;
+}
+
+.login-formlabel {
+    font-family: $font-family;
+}
+
+.login-password-div {
+    display: flex;
+    align-items: center;
+}
+
+
+// Input Field Css
+.login-container .form-control {
+    padding: 1rem 0.75rem !important;
+    border-radius: 0.6rem !important;
+}
+
+.login-container .form-control:focus {
+    box-shadow: none !important;
+    border-color: none !important;
+    border: 2px solid $primary-color;
+  }
+
+  // button css 
+  .login-container .btn {
+    --bs-btn-padding-y: 0.85rem !important;
+    border-radius: 0.6rem !important;
+    font-family: 'Manrope';
+  }
+
+  // icon css 
+  .login-container svg {
+    vertical-align: middle;
+    margin-left: -2em !important;
+}
+
+.login-termsconditions {
+    color: $primary-color;
+    cursor: pointer;
+    font-family: $font-family;
+}
+
+.login-tc-div {
+    display: flex;
+    
+}
+
+.login-forget{
+    font-size: 14px;
+    color: red;
+    font-family: $font-family;
+    cursor: pointer;
+    margin: 0.5em 0 0 0;
+}
+
+.login-sign-btn{
+    background: $info-color;
+    color: $primary-color;
+}
+
+.login-sign-btn:hover {
+    background: #ECF1FF !important;
+    color: #406AFF !important;
+}
+
+.login-guest-btn{
+    background: #0d6efdb0;
+    color: #ffffff;
+}
+
+.login-guest-btn:hover {
+    background: #0d6efdb0 !important;
+    color: #ffffff !important;
+}
+
+.login-or {
+    text-align: center;
+    color: $secondary-color;
+    font-family: $font-family;
+}
+
+.login-remember {
+    display: flex;
+    align-items: center;
+}
+
+.login-remember-p {
+    margin: 0 0 0 1em;
+    color: $secondary-color;
+    font-family: $font-family;
+}
+
+.login-remember-maindiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
