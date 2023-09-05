@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Header from '../Components/Header';
+// import Header from '../Components/Header';
 import '../Sass/Login.scss';
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useState } from 'react';
@@ -22,33 +22,33 @@ function ForgetScreen() {
         const data = new FormData(event.target)
         console.log('login data ----- ', data.get('email'))
 
-        const body={
-            "email": data.get('email'),   
-        }
-        axios.post(`${Api}/auth/password_reset/`,body)
-        .then((res)=>{
-            console.log('Forget Api Response ---- ',res.data)
+        // const body={
+        //     "email": data.get('email'),   
+        // }
+        // axios.post(`${Api}/auth/password_reset/`,body)
+        // .then((res)=>{
+        //     console.log('Forget Api Response ---- ',res.data)
 
-            // if( res.data.error == 'Invalid Password'){
-            //     NotificationManager.error(res.data.error)
-            // }else{
-                NotificationManager.success('New Password Link sent to your Email Successfully')
-                // navigate('/')
-                event.target.reset()
-                setState_Loader(false)
-            // }
-        }).catch((error)=>{
-            console.log('Forget Api Error ----- ',error)
-            NotificationManager.error(error.response.data.email[0])
-            setState_Loader(false)
-        })
+        //     // if( res.data.error == 'Invalid Password'){
+        //     //     NotificationManager.error(res.data.error)
+        //     // }else{
+        //         NotificationManager.success('New Password Link sent to your Email Successfully')
+        //         // navigate('/')
+        //         event.target.reset()
+        //         setState_Loader(false)
+        //     // }
+        // }).catch((error)=>{
+        //     console.log('Forget Api Error ----- ',error)
+        //     NotificationManager.error(error.response.data.email[0])
+        //     setState_Loader(false)
+        // })
 
     }
      
 
   return (
     <>
-    <Header loginHeader={true} />
+    {/* <Header loginHeader={true} /> */}
    <Container >
      <Form onSubmit={HandleSubmit} className='login-container'>
         <h1 className='login-h1'>Login your account</h1>

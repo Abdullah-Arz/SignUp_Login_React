@@ -1,13 +1,13 @@
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Header from '../Components/Header';
+// import Header from '../Components/Header';
 import '../Sass/Signup.scss';
 import { FiEye, FiEyeOff,FiCheckCircle, FiXCircle } from "react-icons/fi";
 import { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { NotificationManager} from 'react-notifications';
+// import { NotificationManager} from 'react-notifications';
 
 function Signup() {
 
@@ -16,7 +16,7 @@ function Signup() {
     const [passwordType1, setPasswordType1] = useState("password");
     const [passwordInput1, setPasswordInput1] = useState("");
 
-    const Api = localStorage.getItem('API')
+    // const Api = localStorage.getItem('API')
     const navigate = useNavigate()
 
     const handlePasswordChange =(evnt)=>{
@@ -43,44 +43,45 @@ function Signup() {
         const data = new FormData(event.target)
         console.log('Sign up data ----- ', data.get('first'),data.get('last'),data.get('email'),data.get('username'),data.get('password'),data.get('confirmPassword'))
         
-        const body={
-            "first_name":data.get('first'),
-            "last_name": data.get('last'),
-            "email": data.get('email'),
-            "password" : data.get('password'),
-            "password2" : data.get('confirmPassword'),
-            "username": data.get('username')    
-        }
-        axios.post(`${Api}/auth/user_register/`,body)
-        .then((res)=>{
-            console.log('Signup Api Response ---- ',res.data);
-            // NotificationManager.success(res.data.error)
-            if(res.data.status == false){
-              if(res.data.error == 'User Already Exists, Try Adding other username'){
-                NotificationManager.error('This Username is Already Taken')
-            }else if(res.data.error == 'Email must be Unique.'){
-                NotificationManager.error(res.data.error)
-            }else if(res.data.error == 'Password must contain at least one uppercase letter..'){
-              NotificationManager.error(res.data.error)
-            }else if(res.data.error == 'Password must contain at least one unique character.'){
-              NotificationManager.error(res.data.error)
-            }else {
-                // event.target.reset(),
-                NotificationManager.error('Something Went Wrong');   
-            }
-            }else{
-              navigate('/')
-              NotificationManager.success(res.data.message)
-            }
+        // const body={
+        //     "first_name":data.get('first'),
+        //     "last_name": data.get('last'),
+        //     "email": data.get('email'),
+        //     "password" : data.get('password'),
+        //     "password2" : data.get('confirmPassword'),
+        //     "username": data.get('username')    
+        // }
+        // axios.post(`${Api}/auth/user_register/`,body)
+        // .then((res)=>{
+        //     console.log('Signup Api Response ---- ',res.data);
+        //     // NotificationManager.success(res.data.error)
+        //     if(res.data.status == false){
+        //       if(res.data.error == 'User Already Exists, Try Adding other username'){
+        //         NotificationManager.error('This Username is Already Taken')
+        //     }else if(res.data.error == 'Email must be Unique.'){
+        //         NotificationManager.error(res.data.error)
+        //     }else if(res.data.error == 'Password must contain at least one uppercase letter..'){
+        //       NotificationManager.error(res.data.error)
+        //     }else if(res.data.error == 'Password must contain at least one unique character.'){
+        //       NotificationManager.error(res.data.error)
+        //     }else {
+        //         // event.target.reset(),
+        //         NotificationManager.error('Something Went Wrong');   
+        //     }
+        //     }else{
+        //       navigate('/')
+        //       NotificationManager.success(res.data.message)
+        //     }
            
 
             
             
 
-        }).catch((error)=>{
-            console.log('Signup Api Error ----- ',error)
-            NotificationManager.error('Something Went Wrong')
-        })
+        // }).catch((error)=>{
+        //     console.log('Signup Api Error ----- ',error)
+        //     NotificationManager.error('Something Went Wrong')
+        // })
+        navigate('')
     }
 
     const [input, setInput] = useState({
@@ -137,14 +138,16 @@ function Signup() {
       }
      
       const HandleLogin = () => {
-        navigate('/')
+        navigate('/login')
       }
 
   return (
     <>
-    <Header loginHeader={true} />
+    {/* <Header loginHeader={true} /> */}
    <Container >
-     <Form onSubmit={HandleSubmit} className='signup-container'>
+     <Form 
+     onSubmit={HandleSubmit} 
+     className='signup-container'>
         <h1 className='signup-h1'>Sign Up</h1>
         <p className='signup-p'>Please enter your details</p>
         <div className = 'mt-3' />

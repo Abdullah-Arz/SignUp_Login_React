@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Header from '../Components/Header';
+// import Header from '../Components/Header';
 import '../Sass/Login.scss';
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useEffect, useState } from 'react';
@@ -19,15 +19,15 @@ function Login() {
     const [state_email, setState_Email] = useState('');
     const [state_password, setState_Password] = useState('');
     const [state_checked, setState_Checked] = useState('');
-    const Api = localStorage.getItem('API')
-    const Token = sessionStorage.getItem('Token')
-    const remember = localStorage.getItem('remember')
+    // const Api = localStorage.getItem('API')
+    // const Token = sessionStorage.getItem('Token')
+    // const remember = localStorage.getItem('remember')
     const navigate = useNavigate()
 
     useEffect(()=>{
-      setState_Email(localStorage.getItem('email'))
-      setState_Password(localStorage.getItem('password'))
-      setState_Checked(localStorage.getItem('remember'))
+      // setState_Email(localStorage.getItem('email'))
+      // setState_Password(localStorage.getItem('password'))
+      // setState_Checked(localStorage.getItem('remember'))
     },[])
     
 
@@ -43,49 +43,49 @@ function Login() {
 
     const HandleSubmit = (event) => {
         event.preventDefault()
-        setState_Loader(true)
+        // setState_Loader(true)
         const data = new FormData(event.target)
         
         console.log('login data ----- ', data.get('username'),data.get('password'))
 
-        const body={
-            "username": data.get('username'),
-            "password" : data.get('password'),   
-        }
-        axios.post(`${Api}/auth/signin/`,body)
-        .then((res)=>{
-            console.log('Login Api Response ---- ',res.data)
+        // const body={
+        //     "username": data.get('username'),
+        //     "password" : data.get('password'),   
+        // }
+        // axios.post(`${Api}/auth/signin/`,body)
+        // .then((res)=>{
+        //     console.log('Login Api Response ---- ',res.data)
 
-            if( res.data.error === 'Invalid Password'){
-                NotificationManager.error(res.data.error)
-                setState_Loader(false)
-            }else if(res.data.error === 'Invalid email or username'){
-              NotificationManager.error(res.data.error)
-              setState_Loader(false)
-            }else{
-                NotificationManager.success('Login Successfully')
-                navigate('/home')
-                setState_Loader(false)
-                event.target.reset()
-                sessionStorage.setItem('LoginUser',true)
-                sessionStorage.setItem('Token',res.data.access)
-                sessionStorage.setItem('RefreshToken',res.data.refresh)
+        //     if( res.data.error === 'Invalid Password'){
+        //         NotificationManager.error(res.data.error)
+        //         setState_Loader(false)
+        //     }else if(res.data.error === 'Invalid email or username'){
+        //       NotificationManager.error(res.data.error)
+        //       setState_Loader(false)
+        //     }else{
+        //         NotificationManager.success('Login Successfully')
+        //         navigate('/home')
+        //         setState_Loader(false)
+        //         event.target.reset()
+        //         sessionStorage.setItem('LoginUser',true)
+        //         sessionStorage.setItem('Token',res.data.access)
+        //         sessionStorage.setItem('RefreshToken',res.data.refresh)
 
-                if(state_checked == true){
-                  localStorage.setItem('remember',state_checked)
-                  localStorage.setItem('email',data.get('username'))
-                  localStorage.setItem('password',data.get('password'))
-                }else{
-                  localStorage.setItem('remember',state_checked)
-                  localStorage.setItem('email','')
-                  localStorage.setItem('password','')
-                }
-            }
+        //         if(state_checked == true){
+        //           localStorage.setItem('remember',state_checked)
+        //           localStorage.setItem('email',data.get('username'))
+        //           localStorage.setItem('password',data.get('password'))
+        //         }else{
+        //           localStorage.setItem('remember',state_checked)
+        //           localStorage.setItem('email','')
+        //           localStorage.setItem('password','')
+        //         }
+        //     }
 
-        }).catch((error)=>{
-            console.log('Login Api Error ----- ',error)
-            setState_Loader(false)
-        })
+        // }).catch((error)=>{
+        //     console.log('Login Api Error ----- ',error)
+        //     setState_Loader(false)
+        // })
 
     }
 
@@ -94,7 +94,7 @@ function Login() {
     }
 
     const HandleSignUp = () => {
-        navigate('/signup')
+        navigate('/')
     }
 
     const HandleGuestLogin = () => {
@@ -109,7 +109,7 @@ function Login() {
 
   return (
     <>
-    <Header loginHeader={true} />
+    {/* <Header loginHeader={true} /> */}
    <Container >
      <Form onSubmit={HandleSubmit} className='login-container'>
         <h1 className='login-h1'>Login your account</h1>
@@ -175,17 +175,17 @@ function Login() {
 
       <p className='login-or'>OR</p>
 
-      <Button onClick={HandleGuestLogin} className='mb-5 login-guest-btn' style={{ display:"flex",justifyContent:'center', alignItems:'flex-end'}} variant="primary" type="submit">
+      {/* <Button onClick={HandleGuestLogin} className='mb-5 login-guest-btn' style={{ display:"flex",justifyContent:'center', alignItems:'flex-end'}} variant="primary" type="submit">
         <div style={{marginLeft:'2em', alignItems:'center', display:'flex'}}>
         <FaUserAlt style={{marginRight:'8px', fontSize:'16px'}} />
         Guest Login
         </div>
-      </Button>
+      </Button> */}
 
       
 
       <Button 
-      className='mt-3 mb-5 login-sign-btn' 
+      className='mb-5 login-sign-btn' 
       type="submit"
       onClick={HandleSignUp}
       >
